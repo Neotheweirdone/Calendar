@@ -6,6 +6,7 @@ import { Modal, Button } from 'react-bootstrap'
 
 
 function CalendarEvent() {
+const[errorMessage,seterrorMessage]=useState('');
 
     const [nameEvent, setName] = useState('');
     const [deleteId, setDeleteId] = useState('');
@@ -21,11 +22,18 @@ function CalendarEvent() {
 
     {/*save note*/ }
     const handleSaveEvent = e => {
+        if(nameEvent!==''){
         setSourceId(sourceId + 1);
+      
         const addEvent = { 'id': sourceId, 'title': nameEvent, 'date': date };
         setList([...noteList, addEvent]);
         setName('');
         setShow(false);
+        seterrorMessage('');
+      }else{
+          seterrorMessage('This field is required')
+      }
+      
     };
 
     {/*select date*/ }
@@ -56,7 +64,7 @@ function CalendarEvent() {
 
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
-                    <Modal.Title> Add Event</Modal.Title>
+                    <Modal.Title> Add Note</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <input
@@ -66,6 +74,7 @@ function CalendarEvent() {
                         value={nameEvent}
                         placeholder="Note Name"
                     />
+                    <p style={{color:'red'}}>{errorMessage}</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" onClick={handleClose}>

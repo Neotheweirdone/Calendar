@@ -1,0 +1,14 @@
+Testcases that should be implemented using JEST-
+
+1)Buttons are clickable or not
+2)On clicking the individual dates the modal is popping out or not
+3)The cancel button on the modal is working or not
+4)writing an note is working or not
+5)saving a note is working or not
+6) saving a note anywhere on the calendar is working or not
+7)webpage layout is properly visible or not
+
+Reason for implementation-
+
+The above testcases need to be validated for the application to render and work properly
+on different devices.
